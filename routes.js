@@ -32,7 +32,11 @@ const routes = [
     path: "/hello/{username?}",
     handler: (request, h) => {
       const { username = "strangers" } = request.params;
-      return `halo ${username}`;
+      const { lang } = request.query;
+      if (lang === "jp") {
+        return `konichiwa ${username}`;
+      }
+      return `hello ${username}`;
     },
   },
   {
